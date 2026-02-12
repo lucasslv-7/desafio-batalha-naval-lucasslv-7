@@ -1,47 +1,47 @@
 #include <stdio.h>
 
-int main()
-{
+int main() {
 
-    int tabuleiro[5][5] = {0}; // Inicializa tudo com 0
+    int tabuleiro[10][10] = {0}; 
 
     /*
-    Começa na posição (1,2) e ocupa 3 posições para baixo.
+    NAVIO 1 - VERTICAL
     */
-    int linha_vertical = 1;
-    int coluna_vertical = 2;
-
-    for (int i = 0; i < 3; i++)
-    {
-        tabuleiro[linha_vertical + i][coluna_vertical] = 3;
+    for (int i = 0; i < 4; i++) {
+        tabuleiro[1 + i][2] = 3;
     }
 
     /*
-    Começa na posição (4,0) e ocupa 3 posições para direita.
+    NAVIO 2 - HORIZONTAL
     */
-    int linha_horizontal = 4;
-    int coluna_horizontal = 0;
-
-    for (int i = 0; i < 3; i++)
-    {
-        tabuleiro[linha_horizontal][coluna_horizontal + i] = 3;
+    for (int i = 0; i < 4; i++) {
+        tabuleiro[6][3 + i] = 3;
     }
 
     /*
-    Exibe coordenadas ocupadas
+    NAVIO 3 - DIAGONAL PRINCIPAL
     */
-    printf("Coordenadas ocupadas pelos navios:\n\n");
+    for (int i = 0; i < 4; i++) {
+        tabuleiro[2 + i][2 + i] = 3;
+    }
 
-    for (int i = 0; i < 5; i++)
-    {
-        for (int j = 0; j < 5; j++)
-        {
+    /*
+    NAVIO 4 - DIAGONAL SECUNDÁRIA
+    */
+    for (int i = 0; i < 4; i++) {
+        tabuleiro[7 - i][1 + i] = 3;
+    }
 
-            if (tabuleiro[i][j] == 3)
-            {
-                printf("Navio em: (%d,%d)\n", i, j);
-            }
+    /*
+    Exibição completa do tabuleiro
+    */
+    printf("Tabuleiro 10x10:\n\n");
+
+    for (int i = 0; i < 10; i++) {
+        for (int j = 0; j < 10; j++) {
+            printf("%d ", tabuleiro[i][j]);
         }
+        printf("\n");
     }
 
     return 0;
